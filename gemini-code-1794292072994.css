@@ -1,0 +1,207 @@
+:root {
+    --bg-color: #f7f7f7;
+    --text-color: #111111;
+    --text-muted: #666666;
+    --font-en: 'Inter', sans-serif;
+    --font-tw: 'Noto Serif TC', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-tw);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Lenis 必備 CSS */
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-scrolling iframe { pointer-events: none; }
+
+/* 導覽列 */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 2rem 4vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    mix-blend-mode: difference;
+    color: white;
+    font-family: var(--font-en);
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
+
+.menu-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 2rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Hero 區塊 */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10vh 4vw;
+}
+
+.hero-title {
+    font-family: var(--font-en);
+    font-size: clamp(4rem, 10vw, 12rem);
+    line-height: 0.85;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    margin-bottom: 4rem;
+}
+
+.hero-subtitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding-top: 1.5rem;
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+/* 作品區塊 (左右佈局：左側標題固定，右側滾動) */
+.work-section {
+    display: flex;
+    padding: 15vh 4vw;
+    gap: 4vw;
+}
+
+.work-header {
+    flex: 0 0 30%;
+    position: sticky;
+    top: 15vh;
+    height: fit-content;
+}
+
+.work-header h2 {
+    font-family: var(--font-en);
+    font-size: clamp(2rem, 4vw, 5rem);
+    line-height: 0.9;
+    font-weight: 400;
+}
+
+.work-grid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15vh;
+}
+
+.project-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.project-image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #eaeaea;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.1); /* 預留給 GSAP 視差的空間 */
+}
+
+.project-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: 1rem;
+}
+
+.project-info h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.project-info p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    max-width: 50%;
+    text-align: right;
+}
+
+/* 頁尾區塊 */
+.footer {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    padding: 20vh 4vw 5vh;
+    font-family: var(--font-en);
+}
+
+.footer-content h2 {
+    font-size: clamp(3rem, 8vw, 10rem);
+    line-height: 0.9;
+    font-weight: 400;
+    margin-bottom: 15vh;
+}
+
+.footer-details {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 2rem;
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.email-link {
+    color: var(--bg-color);
+    text-decoration: none;
+}
+
+/* RWD 設定 */
+@media (max-width: 768px) {
+    .work-section {
+        flex-direction: column;
+    }
+    .work-header {
+        position: relative;
+        top: 0;
+        margin-bottom: 4rem;
+    }
+    .project-info {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .project-info p {
+        max-width: 100%;
+        text-align: left;
+    }
+    .hero-subtitle {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
